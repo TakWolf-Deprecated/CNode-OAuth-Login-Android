@@ -78,11 +78,11 @@ public final class CNodeOAuthWebView extends WebView {
     }
 
     private void setLoadingPage() {
-
+        loadUrl("file:///android_asset/cnode-oauth/loading.html");
     }
 
     private void setErrorPage() {
-
+        loadUrl("file:///android_asset/cnode-oauth/error.html");
     }
 
     private void startGetAccessTokenAsyncTask(final String cookie) {
