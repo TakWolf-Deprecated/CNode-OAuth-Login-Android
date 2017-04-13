@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CNodeOAuth" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#ff333333</item>
+        <item name="colorPrimaryDark">#ff222222</item>
+        <item name="colorAccent">#ff80bd01</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+</resources>
