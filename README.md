@@ -1,16 +1,73 @@
 # CNode OAuth - Android #
 
-[CNode社区](https://cnodejs.org) Open Auth 登录的 Android 用 SDK。
+实现直接用 GitHub 账户登录 [CNode社区](https://cnodejs.org)，Android 端用组件。
+
+iOS端对应的组件：暂时还没有，如果你开发了一个，请[告诉我](mailto:takwolf@foxmail.com)。
 
 ## 原理 ##
 
-CNode仅能通过GitHub账号登录。
+通过 WebView 加载 GitHub 的授权页面，用户完成授权后，等待页面重定向到 CNode 首页。
 
-通过WebView加载GitHub的授权页面，用户完成授权后，等待页面重定向到CNode首页。
+这时，取出当前 Cookie，用该 Cookie 去抓取用户设置页面，解析出 AccessToken。
 
-这时，取出当前Cookie，用该Cookie去抓取用户设置页面，解析出AccessToken。
+这个 AccessToken 可以被API用于用户鉴权使用。
 
-这个AccessToken可以被API用于用户鉴权使用。
+## 用法 ##
+
+### 快速集成 ###
+
+添加依赖：
+
+```
+compile 'org.cnodejs.android:oauth:0.0.1'
+```
+
+该依赖会自动注册 `CNodeOAuthActivity` 和网络权限。
+
+在你的 `Activity` 中，启动授权页面：
+
+```
+private static final int REQUEST_CNODE_OAUTH = 1;
+
+......
+
+startActivityForResult(new Intent(this, CNodeOAuthActivity.class), REQUEST_CNODE_OAUTH);
+```
+
+重写 `onActivityResult` 来监听返回值：
+
+```
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CNODE_OAUTH && resultCode == RESULT_OK && data != null) {
+        String accessToken = data.getStringExtra(CNodeOAuthActivity.EXTRA_ACCESS_TOKEN); // 这里就是 API 鉴权用的 AccessToken
+    }
+}
+```
+
+### 自定义样式 ###
+
+如果你希望自定义样式，包括配色，ActionBar样式等，你可以直接使用 `CNodeOAuthWebView`，示例如下：
+
+```
+CNodeOAuthWebView webView = findViewById(R.id.cnode_oauth_web_view);
+webView.setOnOAuthSuccessListener(new CNodeOAuthWebView.OnOAuthSuccessListener() {
+
+    @Override
+    public void onOAuthSuccess(String accessToken) {
+        // Do something about accessToken.
+    }
+
+});
+webView.openOAuth();
+```
+
+## 哪些 CNode 客户端在使用这个库？ ##
+
+请[告诉我](mailto:takwolf@foxmail.com)你的应用在使用，如果你希望它出现在下面的列表中。
+
+- [CNode-Material-Design](https://github.com/TakWolf/CNode-Material-Design)
 
 ## Author ##
 
