@@ -26,7 +26,7 @@ CNode 验证成功后，会重定向到首页：https://cnodejs.org/
 
 这时截断这个重定向，取出 CNode 的 session_cookie，用这个 session_cookie 去抓取设置页面：https://cnodejs.org/setting
 
-解析Dom文档，取出 AccessToken。
+解析 HTML 文档，取出 AccessToken。
 
 关于 OAuth 2.0 的更详细资料，请参考 [https://oauth.net/2/](https://oauth.net/2/)
 
