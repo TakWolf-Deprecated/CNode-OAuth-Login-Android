@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        tools:visibility="invisible"
+        android:id="@+id/layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/white">
+
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            app:matProg_barColor="?attr/colorAccent"
+            app:matProg_progressIndeterminate="true"
+            app:matProg_barWidth="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="加载中，请稍后..."
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="登录过程似乎出现了一些问题..."
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+        <Button style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/btn_reopen_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重新登录" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        tools:visibility="invisible"
+        android:id="@+id/layout_finish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/white">
+
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            app:matProg_barColor="?attr/colorAccent"
+            app:matProg_progressIndeterminate="true"
+            app:matProg_barWidth="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="账户授权成功，正在等待跳转..."
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</merge>

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import org.cnodejs.android.oauth.CNodeOAuthActivity;
+import org.cnodejs.android.oauthlogin.CNodeOAuthLoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,7 +13,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int REQUEST_CNODE_OAUTH = 1;
+    private static final int REQUEST_CNODE_OAUTH_LOGIN = 1;
 
     @BindView(R.id.tv_token)
     protected TextView tvToken;
@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_oauth)
     protected void onBtnOAuthClick() {
-        startActivityForResult(new Intent(this, CNodeOAuthActivity.class), REQUEST_CNODE_OAUTH);
+        startActivityForResult(new Intent(this, CNodeOAuthLoginActivity.class), REQUEST_CNODE_OAUTH_LOGIN);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CNODE_OAUTH && resultCode == RESULT_OK && data != null) {
-            String accessToken = data.getStringExtra(CNodeOAuthActivity.EXTRA_ACCESS_TOKEN);
+        if (requestCode == REQUEST_CNODE_OAUTH_LOGIN && resultCode == RESULT_OK && data != null) {
+            String accessToken = data.getStringExtra(CNodeOAuthLoginActivity.EXTRA_ACCESS_TOKEN);
             tvToken.setText(accessToken);
         }
     }
