@@ -1,6 +1,9 @@
 package org.cnodejs.android.oauthlogin;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,9 +21,7 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,7 +39,6 @@ public final class CNodeOAuthLoginView extends FrameLayout {
     private ViewGroup layoutLoading;
     private ViewGroup layoutFinish;
     private ViewGroup layoutError;
-    private Button btnReopenLogin;
 
     private OAuthLoginCallback loginCallback;
 
@@ -63,13 +63,13 @@ public final class CNodeOAuthLoginView extends FrameLayout {
         init(context);
     }
 
+    @SuppressLint("ShowToast")
     private void init(final Context context) {
         LayoutInflater.from(context).inflate(R.layout.widget_cnode_oauth_login_view, this, true);
         webView = (WebView) findViewById(R.id.web_view);
         layoutLoading = (ViewGroup) findViewById(R.id.layout_loading);
         layoutFinish = (ViewGroup) findViewById(R.id.layout_finish);
         layoutError = (ViewGroup) findViewById(R.id.layout_error);
-        btnReopenLogin = (Button) findViewById(R.id.btn_reopen_login);
 
         clearCookie();
         webView.setWebViewClient(new WebViewClient() {
@@ -79,13 +79,26 @@ public final class CNodeOAuthLoginView extends FrameLayout {
             public boolean shouldOverrideUrlLoading(WebView webView, String url) {
                 if (TextUtils.isEmpty(url)) {
                     showErrorLayout();
-                } else if (url.equals("https://github.com/")) { // Desktop version
-                    // nothing to do
-                } else if (url.equals("https://github.com/password_reset")) {
-                    Toast.makeText(context, "请在PC浏览器端重置密码", Toast.LENGTH_SHORT).show();
                 } else {
-                    showLoadingLayout();
-                    webView.loadUrl(url);
+                    if (webView.getUrl().startsWith("https://github.com/login/oauth/authorize?")) {
+                        if (url.startsWith("https://github.com/login?") || url.startsWith("https://github.com/login/oauth/authorize?") || url.startsWith("https://cnodejs.org/auth/github/callback?")) {
+                            showLoadingLayout();
+                            webView.loadUrl(url);
+                        } else {
+                            openInBrowser(url);
+                        }
+                    } else {
+                        switch (url) {
+                            case "https://github.com/":
+                            case "https://github.com/password_reset":
+                                openInBrowser(url);
+                                break;
+                            default:
+                                showLoadingLayout();
+                                webView.loadUrl(url);
+                                break;
+                        }
+                    }
                 }
                 return true;
             }
@@ -94,10 +107,10 @@ public final class CNodeOAuthLoginView extends FrameLayout {
             public void onPageFinished(WebView view, String url) {
                 if (TextUtils.isEmpty(url)) {
                     showErrorLayout();
-                } else if (url.equals("https://github.com/login?client_id=0625d398dd9166a196e9&return_to=%2Flogin%2Foauth%2Fauthorize%3Fclient_id%3D0625d398dd9166a196e9%26redirect_uri%3Dhttps%253A%252F%252Fcnodejs.org%252Fauth%252Fgithub%252Fcallback%26response_type%3Dcode")) {
-                    showWebView();
                 } else if (url.equals("https://cnodejs.org/")) {
                     startGetAccessTokenAsyncTask(getCookie(url));
+                } else if (url.startsWith("https://github.com/login?") || url.startsWith("https://github.com/login/oauth/authorize?")) {
+                    showWebView();
                 }
             }
 
@@ -108,7 +121,7 @@ public final class CNodeOAuthLoginView extends FrameLayout {
 
         });
 
-        btnReopenLogin.setOnClickListener(new OnClickListener() {
+        findViewById(R.id.btn_reopen_login).setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -146,25 +159,40 @@ public final class CNodeOAuthLoginView extends FrameLayout {
         return cookieManager.getCookie(url);
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
+    private void openInBrowser(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (intent.resolveActivity(getContext().getPackageManager()) != null) {
+            getContext().startActivity(intent);
+        } else {
+            // do noting
+        }
+    }
+
     private void showWebView() {
+        webView.setVisibility(VISIBLE);
         layoutLoading.setVisibility(INVISIBLE);
         layoutFinish.setVisibility(INVISIBLE);
         layoutError.setVisibility(INVISIBLE);
     }
 
     private void showLoadingLayout() {
+        webView.setVisibility(INVISIBLE);
         layoutLoading.setVisibility(VISIBLE);
         layoutFinish.setVisibility(INVISIBLE);
         layoutError.setVisibility(INVISIBLE);
     }
 
     private void showFinishLayout() {
+        webView.setVisibility(INVISIBLE);
         layoutLoading.setVisibility(INVISIBLE);
         layoutFinish.setVisibility(VISIBLE);
         layoutError.setVisibility(INVISIBLE);
     }
 
     private void showErrorLayout() {
+        webView.setVisibility(INVISIBLE);
         layoutLoading.setVisibility(INVISIBLE);
         layoutFinish.setVisibility(INVISIBLE);
         layoutError.setVisibility(VISIBLE);
