@@ -1,5 +1,28 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'CNode-OAuth-Login-Android'
+
+    siteUrl = 'https://github.com/TakWolf/CNode-OAuth-Login-Android'
+    gitUrl = 'https://github.com/TakWolf/CNode-OAuth-Login-Android.git'
+
+    groupId = 'org.cnodejs.android'
+    artifactId = 'oauth-login'
+
+    libraryVersion = '0.0.1'
+    libraryName = 'CNode OAuth Login - Android'
+    libraryDescription = 'Login on CNode by GitHub for Android Client.'
+
+    developerId = 'TakWolf'
+    developerName = 'TakWolf'
+    developerEmail = 'takwolf@foxmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ['Apache-2.0']
+}
+
 android {
 
     compileSdkVersion 25
@@ -9,7 +32,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 25
         versionCode Integer.parseInt(new Date().format('yyyyMMdd'))
-        versionName '0.0.1'
+        versionName libraryVersion
     }
 
     buildTypes {
@@ -31,3 +54,6 @@ dependencies {
     compile 'com.pnikosis:materialish-progress:1.7'
     compile 'org.jsoup:jsoup:1.10.2'
 }
+
+apply from: 'https://raw.githubusercontent.com/TakWolf/JCenter-Publish-Script/master/install.gradle'
+apply from: 'https://raw.githubusercontent.com/TakWolf/JCenter-Publish-Script/master/bintray.gradle'

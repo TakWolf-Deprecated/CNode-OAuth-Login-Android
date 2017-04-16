@@ -1,5 +1,11 @@
 # CNode OAuth Login - Android #
 
+[![Build Status](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android.svg?branch=master)](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android)
+[![Download](https://api.bintray.com/packages/takwolf/maven/CNode-OAuth-Login-Android/images/download.svg)](https://bintray.com/takwolf/maven/CNode-OAuth-Login-Android/_latestVersion)
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg?style=flat)](https://www.android.com)
+[![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![License](https://img.shields.io/github/license/TakWolf/CNode-OAuth-Login-Android.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0)
+
 直接用 GitHub 账户登录 [CNode社区](https://cnodejs.org)，Android 端用组件。
 
 iOS端对应的组件：暂时还没有，如果你开发了一个，请[告诉我](mailto:takwolf@foxmail.com)。
