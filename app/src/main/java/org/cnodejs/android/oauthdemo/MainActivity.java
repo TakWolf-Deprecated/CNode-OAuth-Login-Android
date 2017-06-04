@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CNODE_OAUTH_LOGIN = 1;
 
     @BindView(R.id.tv_token)
-    protected TextView tvToken;
+    TextView tvToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_oauth)
-    protected void onBtnOAuthClick() {
+    void onBtnOAuthClick() {
         startActivityForResult(new Intent(this, CNodeOAuthLoginActivity.class), REQUEST_CNODE_OAUTH_LOGIN);
     }
 
