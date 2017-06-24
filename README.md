@@ -40,7 +40,7 @@ CNode 验证成功后，会重定向到首页：https://cnodejs.org/
 
 添加依赖：
 
-```
+``` gradle
 compile 'org.cnodejs.android:oauth-login:0.0.1'
 ```
 
@@ -48,7 +48,7 @@ compile 'org.cnodejs.android:oauth-login:0.0.1'
 
 在你的 `Activity` 中，启动授权页面：
 
-```
+``` java
 private static final int REQUEST_CNODE_OAUTH_LOGIN = 1;
 
 ......
@@ -58,7 +58,7 @@ startActivityForResult(new Intent(this, CNodeOAuthLoginActivity.class), REQUEST_
 
 重写 `onActivityResult` 来监听返回值：
 
-```
+``` java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
