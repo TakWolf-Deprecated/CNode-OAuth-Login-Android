@@ -2,6 +2,7 @@ package org.cnodejs.android.oauthlogin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
@@ -12,7 +13,7 @@ public final class CNodeOAuthLoginActivity extends AppCompatActivity implements 
     private CNodeOAuthLoginView loginView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginView = new CNodeOAuthLoginView(this);
         loginView.setOAuthLoginCallback(this);
