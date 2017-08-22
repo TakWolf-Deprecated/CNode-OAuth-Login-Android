@@ -18,15 +18,15 @@ iOS端对应的组件：暂时还没有，如果你开发了一个，请[告诉�
 
 ## 原理 ##
 
-CNode 网站端仅能通过 GitHub 账户登录，使用 OAuth 2.0 授权，但是这个授权过程是简单模式（为了适应浏览器端环境）。
+CNode 网站端仅能通过 GitHub 账户登录，使用 OAuth 2.0 授权。
 
-因此，有如下思路：
+有如下思路：
 
 初始化一个 WebView，载入 CNode 登录地址：https://cnodejs.org/auth/github
 
 这句会重定向到：https://github.com/login/oauth/authorize?response_type=code&redirect_uri=http://cnodejs.org/auth/github/callback&client_id=0625d398dd9166a196e9
 
-GitHub 登录成功后，携带 token 回调： https://cnodejs.org/auth/github/callback?code=xxxxxxx
+GitHub 登录成功后，携带 code 回调： https://cnodejs.org/auth/github/callback?code=xxxxxxx
 
 CNode 验证成功后，会重定向到首页：https://cnodejs.org/
 
