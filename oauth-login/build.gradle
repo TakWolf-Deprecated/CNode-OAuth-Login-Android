@@ -10,7 +10,7 @@ ext {
     groupId = 'org.cnodejs.android'
     artifactId = 'oauth-login'
 
-    libraryVersion = '0.0.1'
+    libraryVersion = '0.0.2'
     libraryName = 'CNode OAuth Login - Android'
     libraryDescription = 'Login on CNode by GitHub for Android Client.'
 
