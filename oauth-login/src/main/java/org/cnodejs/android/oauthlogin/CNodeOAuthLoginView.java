@@ -80,7 +80,8 @@ public final class CNodeOAuthLoginView extends FrameLayout {
                 if (TextUtils.isEmpty(url)) {
                     showErrorLayout();
                 } else {
-                    if (webView.getUrl().startsWith("https://github.com/login/oauth/authorize?")) {
+                    String currentUrl = webView.getUrl();
+                    if (!TextUtils.isEmpty(currentUrl) && currentUrl.startsWith("https://github.com/login/oauth/authorize?")) {
                         if (url.startsWith("https://github.com/login?") || url.startsWith("https://github.com/login/oauth/authorize?") || url.startsWith("https://cnodejs.org/auth/github/callback?")) {
                             showLoadingLayout();
                             webView.loadUrl(url);
