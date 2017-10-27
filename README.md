@@ -1,9 +1,9 @@
 # CNode OAuth Login - Android #
 
 [![Build Status](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android.svg?branch=master)](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android)
-[![Bintray](https://img.shields.io/bintray/v/takwolf/maven/CNode-OAuth-Login-Android.svg)](https://bintray.com/takwolf/maven/CNode-OAuth-Login-Android/_latestVersion)
+[![Bintray](https://api.bintray.com/packages/takwolf/maven/CNode-OAuth-Login-Android/images/download.svg)](https://bintray.com/takwolf/maven/CNode-OAuth-Login-Android/_latestVersion)
 [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
-[![API](https://img.shields.io/badge/API-9%2B-brightgreen.svg)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg)](https://android-arsenal.com/api?level=14)
 [![License](https://img.shields.io/github/license/TakWolf/CNode-OAuth-Login-Android.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 直接用 GitHub 账户登录 [CNode社区](https://cnodejs.org)，Android 端用组件。
