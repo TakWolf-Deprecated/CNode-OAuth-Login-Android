@@ -41,7 +41,7 @@ CNode 验证成功后，会重定向到首页：https://cnodejs.org/
 添加依赖：
 
 ``` gradle
-implementation 'org.cnodejs.android:oauth-login:0.1.0'
+implementation 'org.cnodejs.android:oauth-login:0.1.1'
 ```
 
 该依赖会自动注册 `CNodeOAuthLoginActivity` 和网络权限。
