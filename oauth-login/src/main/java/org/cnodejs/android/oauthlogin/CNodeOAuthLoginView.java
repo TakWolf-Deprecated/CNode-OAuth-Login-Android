@@ -66,10 +66,10 @@ public final class CNodeOAuthLoginView extends FrameLayout {
     @SuppressLint("ShowToast")
     private void init(final Context context) {
         LayoutInflater.from(context).inflate(R.layout.widget_cnode_oauth_login_view, this, true);
-        webView = (WebView) findViewById(R.id.web_view);
-        layoutLoading = (ViewGroup) findViewById(R.id.layout_loading);
-        layoutFinish = (ViewGroup) findViewById(R.id.layout_finish);
-        layoutError = (ViewGroup) findViewById(R.id.layout_error);
+        webView = findViewById(R.id.web_view);
+        layoutLoading = findViewById(R.id.layout_loading);
+        layoutFinish = findViewById(R.id.layout_finish);
+        layoutError = findViewById(R.id.layout_error);
 
         clearCookie();
         webView.setWebViewClient(new WebViewClient() {
