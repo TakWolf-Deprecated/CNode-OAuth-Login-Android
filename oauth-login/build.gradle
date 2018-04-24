@@ -51,7 +51,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.pnikosis:materialish-progress:1.7'
-    implementation 'org.jsoup:jsoup:1.11.2'
+    implementation 'org.jsoup:jsoup:1.11.3'
 }
 
 apply from: 'https://raw.githubusercontent.com/TakWolf/Bintray-Publish-Script-For-Android/master/install.gradle'
