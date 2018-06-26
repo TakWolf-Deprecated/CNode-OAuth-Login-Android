@@ -8,7 +8,7 @@ android {
         applicationId 'org.cnodejs.android.oauthdemo'
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode Integer.parseInt(new Date().format('yyyyMMdd'))
+        versionCode Integer.valueOf(new Date().format('yyyyMMdd', TimeZone.getTimeZone('UTC')))
         versionName '1.0.0'
     }
 
