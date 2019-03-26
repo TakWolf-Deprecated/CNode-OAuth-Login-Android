@@ -54,5 +54,5 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.11.3'
 }
 
-apply from: 'https://raw.githubusercontent.com/TakWolf/Bintray-Publish-Script-For-Android/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/TakWolf/Bintray-Publish-Script-For-Android/master/bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/TakWolf/Android-Bintray-Publish-Demo/master/script/install.gradle'
+apply from: 'https://raw.githubusercontent.com/TakWolf/Android-Bintray-Publish-Demo/master/script/bintray.gradle'
