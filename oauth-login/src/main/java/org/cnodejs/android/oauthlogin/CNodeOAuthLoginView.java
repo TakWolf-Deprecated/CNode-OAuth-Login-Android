@@ -7,11 +7,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.annotation.StyleRes;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -22,6 +17,12 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.annotation.StyleRes;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -74,7 +75,6 @@ public final class CNodeOAuthLoginView extends FrameLayout {
         clearCookie();
         webView.setWebViewClient(new WebViewClient() {
 
-            @SuppressWarnings("StatementWithEmptyBody")
             @Override
             public boolean shouldOverrideUrlLoading(WebView webView, String url) {
                 if (TextUtils.isEmpty(url)) {
@@ -145,7 +145,6 @@ public final class CNodeOAuthLoginView extends FrameLayout {
         webView.loadUrl("https://cnodejs.org/auth/github");
     }
 
-    @SuppressWarnings("deprecation")
     private void clearCookie() {
         CookieSyncManager cookieSyncManager = CookieSyncManager.createInstance(getContext());
         CookieManager cookieManager = CookieManager.getInstance();
