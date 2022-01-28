@@ -1,4 +1,10 @@
-# CNode OAuth Login - Android #
+# Deprecated
+
+- 不是标准流程，没有独立出来成为库的意义
+
+- 授权页面样式定制化困难
+
+# CNode OAuth Login - Android
 
 [![Build Status](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android.svg?branch=master)](https://travis-ci.org/TakWolf/CNode-OAuth-Login-Android)
 [![Bintray](https://api.bintray.com/packages/takwolf/maven/CNode-OAuth-Login-Android/images/download.svg)](https://bintray.com/takwolf/maven/CNode-OAuth-Login-Android/_latestVersion)
@@ -10,13 +16,13 @@
 
 iOS端对应的组件：暂时还没有，如果你开发了一个，请[告诉我](mailto:takwolf@foxmail.com)。
 
-## 问题 ##
+## 问题
 
 该项目来源于下面这个讨论：
 
 [https://github.com/TakWolf/CNode-Material-Design/issues/37](https://github.com/TakWolf/CNode-Material-Design/issues/37)
 
-## 原理 ##
+## 原理
 
 CNode 网站端仅能通过 GitHub 账户登录，使用 OAuth 2.0 授权。
 
@@ -36,7 +42,7 @@ CNode 验证成功后，会重定向到首页：https://cnodejs.org/
 
 关于 OAuth 2.0 的更详细资料，请参考 [https://oauth.net/2/](https://oauth.net/2/)
 
-## 用法 ##
+## 用法
 
 添加依赖：
 
@@ -69,27 +75,19 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 }
 ```
 
-## 哪些 CNode 客户端在使用这个库？ ##
+## 哪些 CNode 客户端在使用这个库？
 
 请[告诉我](mailto:takwolf@foxmail.com)，如果你希望它出现在下面的列表中。
 
 - [CNode-Material-Design](https://github.com/TakWolf/CNode-Material-Design)
 
-## Dependencies ##
+## Dependencies
 
 - [jsoup](https://jsoup.org)
 
 - [materialish-progress](https://github.com/pnikosis/materialish-progress)
 
-## Author ##
-
-TakWolf
-
-[takwolf@foxmail.com](mailto:takwolf@foxmail.com)
-
-[http://takwolf.com](http://takwolf.com)
-
-## License ##
+## License
 
 ```
 Copyright 2017 TakWolf
